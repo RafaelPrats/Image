@@ -1,0 +1,30 @@
+<?php
+
+Route::get('proyectos', 'Comercializacion\ProyectosController@inicio');
+Route::get('proyectos/listar_reporte', 'Comercializacion\ProyectosController@listar_reporte');
+Route::get('proyectos/add_proyecto', 'Comercializacion\ProyectosController@add_proyecto');
+Route::post('proyectos/seleccionar_cliente', 'Comercializacion\ProyectosController@seleccionar_cliente');
+Route::get('proyectos/buscar_form_especificaciones', 'Comercializacion\ProyectosController@buscar_form_especificaciones');
+Route::post('proyectos/form_combos_seleccionar_planta', 'Comercializacion\ProyectosController@form_combos_seleccionar_planta');
+Route::get('proyectos/agregar_combos_pedido', 'Comercializacion\ProyectosController@agregar_combos_pedido');
+Route::post('proyectos/store_proyecto', 'Comercializacion\ProyectosController@store_proyecto');
+Route::get('proyectos/cargar_opciones_orden_fija', 'Comercializacion\ProyectosController@cargar_opciones_orden_fija');
+Route::get('proyectos/editar_proyecto', 'Comercializacion\ProyectosController@editar_proyecto');
+Route::post('proyectos/update_proyecto', 'Comercializacion\ProyectosController@update_proyecto');
+Route::post('proyectos/delete_pedido', 'Comercializacion\ProyectosController@delete_pedido');
+Route::get('proyectos/mover_fecha_orden_fija', 'Comercializacion\ProyectosController@mover_fecha_orden_fija');
+Route::post('proyectos/store_mover_fechas', 'Comercializacion\ProyectosController@store_mover_fechas');
+Route::get('proyectos/pre_factura', 'Comercializacion\ProyectosController@pre_factura');
+Route::post('proyectos/delete_orden_fija', 'Comercializacion\ProyectosController@delete_orden_fija');
+Route::get('proyectos/copiar_pedido', 'Comercializacion\ProyectosController@copiar_pedido');
+Route::post('proyectos/store_copiar_pedido', 'Comercializacion\ProyectosController@store_copiar_pedido');
+Route::post('proyectos/generar_packings', 'Comercializacion\ProyectosController@generar_packings');
+Route::post('proyectos/combinar_pedidos', 'Comercializacion\ProyectosController@combinar_pedidos');
+Route::post('proyectos/separar_pedidos', 'Comercializacion\ProyectosController@separar_pedidos');
+Route::get('proyectos/obtener_historial_orden_fija', 'Comercializacion\ProyectosController@obtener_historial_orden_fija');
+Route::post('proyectos/update_orden_fija', 'Comercializacion\ProyectosController@update_orden_fija');
+Route::get('proyectos/descargar_packing', 'Comercializacion\ProyectosController@descargar_packing');
+Route::get('proyectos/descargar_packings_all', 'Comercializacion\ProyectosController@descargar_packings_all');
+Route::get('proyectos/descargar_flor_postco', 'Comercializacion\ProyectosController@descargar_flor_postco');
+Route::get('proyectos/descargar_jire', 'Comercializacion\ProyectosController@descargar_jire');
+Route::get('proyectos/buscar_cambios_diarios', 'Comercializacion\ProyectosController@buscar_cambios_diarios');
