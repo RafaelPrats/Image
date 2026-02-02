@@ -121,7 +121,8 @@
                         foreach ($resumen_variedad_longitud as $pos => $r) {
                             if (
                                 $r['id_variedad'] == $detalle->id_variedad &&
-                                $r['longitud'] == $detalle->longitud_ramo
+                                $r['longitud'] == $detalle->longitud_ramo &&
+                                $r['peso'] == $detalle->peso_ramo
                             ) {
                                 $pos_en_resumen = $pos;
                             }
@@ -134,8 +135,8 @@
                             $resumen_variedad_longitud[] = [
                                 'id_variedad' => $detalle->id_variedad,
                                 'longitud' => $detalle->longitud_ramo,
+                                'peso' => $detalle->peso_ramo,
                                 'nombre_planta' => $detalle->nombre_planta,
-                                'nombre_variedad' => $detalle->nombre_variedad,
                                 'nombre_variedad' => $detalle->nombre_variedad,
                                 'tallos' => $tallos,
                                 'ramos' => $ramos,
@@ -217,7 +218,7 @@
                         <th class="text-center" style="border-color: #9d9d9d">
                             {{ $detalle->nombre_planta }} -
                             <br>
-                            {{ $detalle->nombre_variedad }} {{ $detalle->longitud_ramo }} cm
+                            {{ $detalle->nombre_variedad }} {{ $detalle->longitud_ramo }}cm {{ $detalle->peso_ramo }}gr
                         </th>
                         @if ($pos_d == 0)
                             <th class="text-center" style="border-color: #9d9d9d; font-size: 0.9em;"
@@ -353,7 +354,7 @@
                         <tbody>
                             <tr>
                                 <th class="text-center th_yura_green" colspan="2">
-                                    VARIEDAD-LONGNITUD
+                                    VARIEDAD-LONGNITUD-PESO
                                 </th>
                                 <th class="text-center th_yura_green padding_lateral_5">
                                     TALLOS
@@ -381,8 +382,8 @@
                                     <th style="border-color: #9d9d9d;">
                                         {{ $item['nombre_planta'] }}
                                     </th>
-                                    <th style="border-color: #9d9d9d; width: 25%">
-                                        {{ $item['nombre_variedad'] }} {{ $item['longitud'] }}cm
+                                    <th style="border-color: #9d9d9d;">
+                                        {{ $item['nombre_variedad'] }} {{ $item['longitud'] }}cm {{ $item['peso'] }}gr
                                     </th>
                                     <th class="text-center" style="border-color: #9d9d9d">
                                         {{ $item['tallos'] }}

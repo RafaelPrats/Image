@@ -60,7 +60,7 @@
                 <td class="text-center" id="td_cargar_variedades">
                     <div class="input-group">
                         <span class="input-group-addon bg-yura_dark">
-                            Color
+                            Variedad
                         </span>
                         <select name="filtro_variedad" id="filtro_variedad" class="form-control" style="width: 100%"
                             required="">

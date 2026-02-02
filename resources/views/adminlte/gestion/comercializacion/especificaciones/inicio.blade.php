@@ -50,7 +50,7 @@
                 <td class="text-center" style="border-color: #9d9d9d">
                     <div class="input-group">
                         <span class="input-group-addon bg-yura_dark">
-                            Variedad
+                            Planta
                         </span>
                         <select name="filtro_planta" id="filtro_planta" class="form-control" style="width: 100%"
                             onchange="select_planta($(this).val(), 'filtro_variedad', 'td_cargar_variedades', '<option value=>Todos</option>', '')">
@@ -64,7 +64,7 @@
                 <td class="text-center" style="border-color: #9d9d9d" id="td_cargar_variedades">
                     <div class="input-group">
                         <span class="input-group-addon bg-yura_dark">
-                            Color
+                            Variedad
                         </span>
                         <select name="filtro_variedad" id="filtro_variedad" class="form-control" style="width: 100%">
                             <option value="">Todos</option>
@@ -90,6 +90,14 @@
                             Longitud
                         </span>
                         <input name="filtro_longitud" id="filtro_longitud" class="form-control" style="width: 100%">
+                    </div>
+                </td>
+                <td class="text-center" style="border-color: #9d9d9d" id="td_cargar_longitudes">
+                    <div class="input-group">
+                        <span class="input-group-addon bg-yura_dark">
+                            Peso
+                        </span>
+                        <input name="filtro_peso" id="filtro_peso" class="form-control" style="width: 100%">
                         <span class="input-group-btn">
                             <button type="button" class="btn btn-yura_dark" onclick="listar_reporte()">
                                 <i class="fa fa-fw fa-search"></i>
@@ -98,10 +106,6 @@
                                 onclick="add_especificaciones()">
                                 <i class="fa fa-fw fa-plus"></i>
                             </button>
-                            <!--<button type="button" class="btn btn-yura_default" onclick="exportar_reporte()"
-                                                title="Exportar Excel">
-                                                <i class="fa fa-fw fa-file-excel-o"></i>
-                                            </button>-->
                         </span>
                     </div>
                 </td>

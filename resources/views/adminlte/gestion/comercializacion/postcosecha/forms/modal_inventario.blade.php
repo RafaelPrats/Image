@@ -1,12 +1,13 @@
 <legend style="margin-bottom: 5px" class="text-center">
     <span id="span_seleccion" class="badge table-inventario hidden"></span>
     <b>{{ $variedad->planta->nombre }} {{ $variedad->nombre }}</b> {{ $empaque->nombre }} {{ $tallos_x_ramo }}tallos
-    {{ $longitud_ramo }}cm
+    {{ $longitud_ramo }}cm {{ $peso_ramo }}gr
 </legend>
 <input type="hidden" id="variedad_selected" value="{{ $variedad->id_variedad }}">
 <input type="hidden" id="empaque_selected" value="{{ $empaque->id_empaque }}">
 <input type="hidden" id="tallos_x_ramo_selected" value="{{ $tallos_x_ramo }}">
 <input type="hidden" id="longitud_ramo_selected" value="{{ $longitud_ramo }}">
+<input type="hidden" id="peso_ramo_selected" value="{{ $peso_ramo }}">
 <table class="table-bordered table-inventario" style="width: 100%; border: 1px solid #9d9d9d">
     <tr>
         <th class="padding_lateral_5 th_yura_green">
@@ -53,7 +54,7 @@
     <table class="table-bordered" style="width: 100%; border: 1px solid #9d9d9d">
         <tr>
             <th class="padding_lateral_5 th_yura_green">
-                Color
+                Variedad
             </th>
             <th class="padding_lateral_5 th_yura_green">
                 Presentacion
@@ -63,6 +64,9 @@
             </th>
             <th class="padding_lateral_5 th_yura_green">
                 Longitud
+            </th>
+            <th class="padding_lateral_5 th_yura_green">
+                Peso
             </th>
             <th class="text-center bg-yura_dark">
                 Por Armar
@@ -78,7 +82,8 @@
             @if (
                 $item['item']->id_empaque != $empaque->id_empaque ||
                     $item['item']->tallos_x_ramo != $tallos_x_ramo ||
-                    $item['item']->longitud_ramo != $longitud_ramo)
+                    $item['item']->longitud_ramo != $longitud_ramo ||
+                    $item['item']->peso_ramo != $peso_ramo)
                 @php
                     $por_armar = $item['ramos_inventario'] - $item['ramos'];
                 @endphp
@@ -95,6 +100,9 @@
                     <th class="padding_lateral_5" style="border-color: #9d9d9d">
                         {{ $item['item']->longitud_ramo }}cm
                     </th>
+                    <th class="padding_lateral_5" style="border-color: #9d9d9d">
+                        {{ $item['item']->peso_ramo }}gr
+                    </th>
                     <th class="text-center" style="border-color: #9d9d9d">
                         <button type="button"
                             class="btn btn-xs btn-yura_{{ $por_armar >= 0 ? 'primary' : 'danger' }}">
@@ -109,7 +117,8 @@
                             id="cambiar_a_{{ $pos }}" data-id_variedad="{{ $item['item']->id_variedad }}"
                             data-id_empaque="{{ $item['item']->id_empaque }}"
                             data-tallos_x_ramo="{{ $item['item']->tallos_x_ramo }}"
-                            data-longitud_ramo="{{ $item['item']->longitud_ramo }}">
+                            data-longitud_ramo="{{ $item['item']->longitud_ramo }}"
+                            data-peso_ramo="{{ $item['item']->peso_ramo }}">
                     </th>
                 </tr>
             @endif
@@ -161,12 +170,14 @@
                 let id_empaque = cambiar_a[i].getAttribute('data-id_empaque');
                 let tallos_x_ramo = cambiar_a[i].getAttribute('data-tallos_x_ramo');
                 let longitud_ramo = cambiar_a[i].getAttribute('data-longitud_ramo');
+                let peso_ramo = cambiar_a[i].getAttribute('data-peso_ramo');
 
                 data_crear.push({
                     id_variedad: id_variedad,
                     id_empaque: id_empaque,
                     tallos_x_ramo: tallos_x_ramo,
                     longitud_ramo: longitud_ramo,
+                    peso_ramo: peso_ramo,
                     cantidad: cantidad,
                 });
             }
@@ -189,6 +200,7 @@
                 empaque: $('#empaque_selected').val(),
                 tallos_x_ramo: $('#tallos_x_ramo_selected').val(),
                 longitud_ramo: $('#longitud_ramo_selected').val(),
+                peso_ramo: $('#peso_ramo_selected').val(),
             };
 
             post_jquery_m('{{ url('postcosecha/store_cambios') }}', datos, function() {

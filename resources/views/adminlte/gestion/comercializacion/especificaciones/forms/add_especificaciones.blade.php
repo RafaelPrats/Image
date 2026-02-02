@@ -25,6 +25,9 @@
         <th class="text-center th_yura_green" style="width: 80px">
             LONGITUD
         </th>
+        <th class="text-center th_yura_green" style="width: 80px">
+            PESO
+        </th>
         <th class="text-center th_yura_green">
             <button type="button" class="btn btn-yura_default btn-xs" onclick="add_row()">
                 <i class="fa fa-fw fa-plus"></i>
@@ -70,6 +73,9 @@
         </td>
         <td class="text-center" style="border-color: #9d9d9d">
             <input type="number" style="width: 100%" id="add_longitud_1" class="text-center">
+        </td>
+        <td class="text-center" style="border-color: #9d9d9d">
+            <input type="number" style="width: 100%" id="add_peso_1" class="text-center">
         </td>
         <td class="text-center" style="border-color: #9d9d9d">
         </td>
@@ -131,6 +137,9 @@
             '<input type="number" style="width: 100%" id="add_longitud_' + row + '" class="text-center">' +
             '</td>' +
             '<td class="text-center" style="border-color: #9d9d9d">' +
+            '<input type="number" style="width: 100%" id="add_peso_' + row + '" class="text-center">' +
+            '</td>' +
+            '<td class="text-center" style="border-color: #9d9d9d">' +
             '<button type="button" class="btn btn-yura_danger btn-xs" onclick="del_row(' + row + ')">' +
             '<i class="fa fa-fw fa-times"></i>' +
             '</button>' +
@@ -153,6 +162,7 @@
                 presentacion = $('#add_presentacion_' + i).val();
                 tallos_x_ramos = $('#add_tallos_x_ramos_' + i).val();
                 longitud = $('#add_longitud_' + i).val();
+                peso = $('#add_peso_' + i).val();
                 if (planta != '' && caja != '' && ramos_x_caja > 0 && presentacion != '' && tallos_x_ramos > 0 &&
                     longitud >= 0) {
                     data.push({
@@ -163,6 +173,7 @@
                         presentacion: presentacion,
                         tallos_x_ramos: tallos_x_ramos,
                         longitud: longitud,
+                        peso: peso,
                     });
                 }
             }

@@ -10,10 +10,10 @@
                         onchange="$('.check_esp').prop('checked', $(this).prop('checked'))">
                 </th>
                 <th class="text-center th_yura_green">
-                    VARIEDAD
+                    PLANTA
                 </th>
                 <th class="text-center th_yura_green">
-                    COLOR
+                    VARIEDAD
                 </th>
                 <th class="text-center th_yura_green">
                     CAJA
@@ -29,6 +29,9 @@
                 </th>
                 <th class="text-center th_yura_green" style="width: 90px">
                     LONGITUD
+                </th>
+                <th class="text-center th_yura_green" style="width: 90px">
+                    PESO
                 </th>
             </tr>
         </thead>
@@ -103,16 +106,22 @@
                             onchange="$('#check_{{ $item->id_especificaciones }}').prop('checked', true)"
                             class="text-center" value="{{ $item->longitud_ramo }}">
                     </td>
+                    <td class="text-center" style="border-color: #9d9d9d">
+                        <input type="number" id="edit_peso_ramo_{{ $item->id_especificaciones }}"
+                            style="width: 100%; height: 26px;"
+                            onchange="$('#check_{{ $item->id_especificaciones }}').prop('checked', true)"
+                            class="text-center" value="{{ $item->peso_ramo }}">
+                    </td>
                 </tr>
                 <script>
                     /*select_planta($('#edit_planta_{{ $item->id_especificaciones }}').val(),
-                                                        'edit_variedad_{{ $item->id_especificaciones }}', 'td_cargar_variedades_{{ $item->id_especificaciones }}',
-                                                        '', '');
-                                                    $('#edit_variedad_{{ $item->id_especificaciones }}').LoadingOverlay('show');
-                                                    setTimeout(() => {
-                                                        $('#edit_variedad_{{ $item->id_especificaciones }}').val('{{ $item->id_variedad }}');
-                                                        $('#edit_variedad_{{ $item->id_especificaciones }}').LoadingOverlay('hide');
-                                                    }, 3500);*/
+                                                                        'edit_variedad_{{ $item->id_especificaciones }}', 'td_cargar_variedades_{{ $item->id_especificaciones }}',
+                                                                        '', '');
+                                                                    $('#edit_variedad_{{ $item->id_especificaciones }}').LoadingOverlay('show');
+                                                                    setTimeout(() => {
+                                                                        $('#edit_variedad_{{ $item->id_especificaciones }}').val('{{ $item->id_variedad }}');
+                                                                        $('#edit_variedad_{{ $item->id_especificaciones }}').LoadingOverlay('hide');
+                                                                    }, 3500);*/
                 </script>
             @endforeach
         </tbody>
@@ -143,6 +152,7 @@
                 presentacion = $('#edit_presentacion_' + id_esp).val();
                 tallos_x_ramos = $('#edit_tallos_x_ramos_' + id_esp).val();
                 longitud_ramo = $('#edit_longitud_ramo_' + id_esp).val();
+                peso_ramo = $('#edit_peso_ramo_' + id_esp).val();
                 if (planta != '' && variedad != '' && caja != '' && ramos_x_caja > 0 && presentacion != '' &&
                     tallos_x_ramos > 0 && longitud_ramo >= 0) {
                     data.push({
@@ -154,6 +164,7 @@
                         presentacion: presentacion,
                         tallos_x_ramos: tallos_x_ramos,
                         longitud_ramo: longitud_ramo,
+                        peso_ramo: peso_ramo,
                     })
                 }
             }

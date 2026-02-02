@@ -86,6 +86,7 @@ class PostcosechaController extends Controller
                 'e.nombre as pres_nombre',
                 'dc.tallos_x_ramo',
                 'dc.longitud_ramo',
+                'dc.peso_ramo'
             )->distinct()
             ->where('p.estado', 1)
             ->where('v.assorted', 0)
@@ -112,6 +113,7 @@ class PostcosechaController extends Controller
                 'e.nombre as pres_nombre',
                 'dc.tallos_x_ramo',
                 'dc.longitud_ramo',
+                'dc.peso_ramo'
             )->distinct()
             ->where('p.estado', 1)
             ->where('v.assorted', 1)
@@ -153,6 +155,7 @@ class PostcosechaController extends Controller
                 ->where('dc.id_empaque', $item->id_empaque)
                 ->where('dc.tallos_x_ramo', $item->tallos_x_ramo)
                 ->where('dc.longitud_ramo', $item->longitud_ramo)
+                ->where('dc.peso_ramo', $item->peso_ramo)
                 ->whereIn('p.fecha', $fechas)
                 ->groupBy('p.fecha')
                 ->orderBy('p.fecha')
@@ -170,6 +173,7 @@ class PostcosechaController extends Controller
                 ->where('dc.id_empaque', $item->id_empaque)
                 ->where('dc.tallos_x_ramo', $item->tallos_x_ramo)
                 ->where('m.longitud_ramo', $item->longitud_ramo)
+                ->where('dc.peso_ramo', $item->peso_ramo)
                 ->whereIn('p.fecha', $fechas)
                 ->groupBy('p.fecha')
                 ->orderBy('p.fecha')
@@ -183,6 +187,7 @@ class PostcosechaController extends Controller
                 ->where('id_empaque', $item->id_empaque)
                 ->where('tallos_x_ramo', $item->tallos_x_ramo)
                 ->where('longitud', $item->longitud_ramo)
+                ->where('peso_ramo', $item->peso_ramo)
                 ->whereIn('fecha', $fechas)
                 ->groupBy('fecha')
                 ->orderBy('fecha')
@@ -196,6 +201,7 @@ class PostcosechaController extends Controller
                 ->where('id_empaque_p', $item->id_empaque)
                 ->where('tallos_x_ramo', $item->tallos_x_ramo)
                 ->where('longitud_ramo', $item->longitud_ramo)
+                ->where('peso_ramo', $item->peso_ramo)
                 ->whereIn('fecha_actual', $fechas)
                 ->groupBy('fecha_actual')
                 ->orderBy('fecha_actual')
@@ -208,6 +214,7 @@ class PostcosechaController extends Controller
                 ->where('id_empaque', $item->id_empaque)
                 ->where('tallos_x_ramo', $item->tallos_x_ramo)
                 ->where('longitud_ramo', $item->longitud_ramo)
+                ->where('peso_ramo', $item->peso_ramo)
                 ->where('disponibles', '>', 0)
                 ->get()[0]->cantidad;
             $listado[] = [
@@ -381,6 +388,7 @@ class PostcosechaController extends Controller
             ->where('dc.id_empaque', $empaque->id_empaque)
             ->where('dc.tallos_x_ramo', $request->tallos_x_ramo)
             ->where('dc.longitud_ramo', $request->longitud)
+            ->where('dc.peso_ramo', $request->peso)
             ->whereIn('p.fecha', $fechas)
             ->groupBy('p.fecha')
             ->orderBy('p.fecha')
@@ -398,6 +406,7 @@ class PostcosechaController extends Controller
             ->where('dc.id_empaque', $empaque->id_empaque)
             ->where('dc.tallos_x_ramo', $request->tallos_x_ramo)
             ->where('m.longitud_ramo', $request->longitud)
+            ->where('m.peso_ramo', $request->peso)
             ->whereIn('p.fecha', $fechas)
             ->groupBy('p.fecha')
             ->orderBy('p.fecha')
@@ -411,6 +420,7 @@ class PostcosechaController extends Controller
             ->where('id_empaque', $empaque->id_empaque)
             ->where('tallos_x_ramo', $request->tallos_x_ramo)
             ->where('longitud', $request->longitud)
+            ->where('peso_ramo', $request->peso)
             ->whereIn('fecha', $fechas)
             ->groupBy('fecha')
             ->orderBy('fecha')
@@ -424,6 +434,7 @@ class PostcosechaController extends Controller
             ->where('id_empaque_p', $empaque->id_empaque)
             ->where('tallos_x_ramo', $request->tallos_x_ramo)
             ->where('longitud_ramo', $request->longitud)
+            ->where('peso_ramo', $request->peso)
             ->whereIn('fecha_actual', $fechas)
             ->groupBy('fecha_actual')
             ->orderBy('fecha_actual')
@@ -436,6 +447,7 @@ class PostcosechaController extends Controller
             ->where('id_empaque', $empaque->id_empaque)
             ->where('tallos_x_ramo', $request->tallos_x_ramo)
             ->where('longitud_ramo', $request->longitud)
+            ->where('peso_ramo', $request->peso)
             ->where('disponibles', '>', 0)
             ->get()[0]->cantidad;
         return view('adminlte.gestion.comercializacion.postcosecha.partials._actualizar_row', [
@@ -443,6 +455,7 @@ class PostcosechaController extends Controller
             'empaque' => $empaque,
             'tallos_x_ramo' => $request->tallos_x_ramo,
             'longitud_ramo' => $request->longitud,
+            'peso_ramo' => $request->peso,
             'query_ramos_solidos' => $ramos_solidos,
             'query_ramos_mixtos' => $ramos_mixtos,
             'query_ramos_distribuidos' => $ramos_distribuidos,
@@ -499,6 +512,7 @@ class PostcosechaController extends Controller
                 ->where('dc.id_empaque', $request->id_empaque_p)
                 ->where('dc.tallos_x_ramo', $request->tallos_x_ramo)
                 ->where('dc.longitud_ramo', $request->longitud_ramo)
+                ->where('dc.peso_ramo', $request->peso_ramo)
                 ->get();
             $marcaciones_mixtos = DB::table('proyecto as p')
                 ->join('caja_proyecto as cp', 'cp.id_proyecto', '=', 'p.id_proyecto')
@@ -523,6 +537,7 @@ class PostcosechaController extends Controller
                 ->where('dc.id_empaque', $request->id_empaque_p)
                 ->where('dc.tallos_x_ramo', $request->tallos_x_ramo)
                 ->where('dc.longitud_ramo', $request->longitud_ramo)
+                ->where('dc.peso_ramo', $request->peso_ramo)
                 ->get();
             $marcaciones = $marcaciones_solidos->merge($marcaciones_mixtos)->sortBy('nombre');
 
@@ -548,6 +563,8 @@ class PostcosechaController extends Controller
                     $pedido = $pedido->where('dc.tallos_x_ramo', '=', $request->tallos_x_ramo);
                 if ($request->longitud_ramo != '')
                     $pedido = $pedido->where('dc.longitud_ramo', '=', $request->longitud_ramo);
+                if ($request->peso_ramo != '')
+                    $pedido = $pedido->where('dc.peso_ramo', '=', $request->peso_ramo);
                 $pedido = $pedido->get()[0]->ramos;
 
                 $pedido += DB::table('mixtos as m')
@@ -562,6 +579,7 @@ class PostcosechaController extends Controller
                     ->where('m.id_variedad', $variedad->id_variedad)
                     ->where('dc.tallos_x_ramo', $request->tallos_x_ramo)
                     ->where('dc.longitud_ramo', $request->longitud_ramo)
+                    ->where('dc.peso_ramo', $request->peso_ramo)
                     ->where('dc.id_empaque', $request->id_empaque_p)
                     ->where('p.fecha', '>=', $fecha_min)
                     ->where('p.fecha', '<=', $fecha_fin)
@@ -586,6 +604,7 @@ class PostcosechaController extends Controller
             'variedad' => $variedad,
             'tallos_x_ramo' => $request->tallos_x_ramo,
             'longitud_ramo' => $request->longitud_ramo,
+            'peso_ramo' => $request->peso_ramo,
             'presentacion' => Empaque::find($request->id_empaque_p),
             'marcaciones' => $marcaciones,
             'listado' => $listado,
@@ -602,6 +621,7 @@ class PostcosechaController extends Controller
             $inventario->id_empaque = $request->id_empaque_p;
             $inventario->tallos_x_ramo = $request->tallos_x_ramo;
             $inventario->longitud_ramo = $request->longitud_ramo;
+            $inventario->peso_ramo = $request->peso_ramo;
             $inventario->fecha = $request->fecha;
             $inventario->cantidad = $request->armar;
             $inventario->disponibles = $request->armar;
@@ -640,6 +660,7 @@ class PostcosechaController extends Controller
             ->where('id_variedad', $request->variedad)
             ->where('tallos_x_ramo', $request->tallos_x_ramo)
             ->where('longitud_ramo', $request->longitud_ramo)
+            ->where('peso_ramo', $request->peso_ramo)
             ->where('id_empaque', $request->id_empaque)
             ->where('disponibles', '>', 0)
             ->groupBy('fecha')
@@ -667,6 +688,7 @@ class PostcosechaController extends Controller
                 'e.nombre as pres_nombre',
                 'dc.tallos_x_ramo',
                 'dc.longitud_ramo',
+                'dc.peso_ramo',
             )->distinct()
             ->where('p.estado', 1)
             ->where('v.assorted', 0)
@@ -690,6 +712,7 @@ class PostcosechaController extends Controller
                 'e.nombre as pres_nombre',
                 'dc.tallos_x_ramo',
                 'dc.longitud_ramo',
+                'dc.peso_ramo',
             )->distinct()
             ->where('p.estado', 1)
             ->where('v.assorted', 1)
@@ -720,6 +743,7 @@ class PostcosechaController extends Controller
                 ->where('dc.id_empaque', $item->id_empaque)
                 ->where('dc.tallos_x_ramo', $item->tallos_x_ramo)
                 ->where('dc.longitud_ramo', $item->longitud_ramo)
+                ->where('dc.peso_ramo', $item->peso_ramo)
                 ->whereIn('p.fecha', $fechas)
                 ->get()[0]->cantidad;
             $ramos += DB::table('proyecto as p')
@@ -734,6 +758,7 @@ class PostcosechaController extends Controller
                 ->where('dc.id_empaque', $item->id_empaque)
                 ->where('dc.tallos_x_ramo', $item->tallos_x_ramo)
                 ->where('m.longitud_ramo', $item->longitud_ramo)
+                ->where('m.peso_ramo', $item->peso_ramo)
                 ->whereIn('p.fecha', $fechas)
                 ->get()[0]->cantidad;
             $ramos_inventario = DB::table('cuarto_frio')
@@ -744,6 +769,7 @@ class PostcosechaController extends Controller
                 ->where('id_empaque', $item->id_empaque)
                 ->where('tallos_x_ramo', $item->tallos_x_ramo)
                 ->where('longitud_ramo', $item->longitud_ramo)
+                ->where('peso_ramo', $item->peso_ramo)
                 ->where('disponibles', '>', 0)
                 ->get()[0]->cantidad;
             $listado[] = [
@@ -757,6 +783,7 @@ class PostcosechaController extends Controller
             'variedad' => Variedad::find($request->variedad),
             'tallos_x_ramo' => $request->tallos_x_ramo,
             'longitud_ramo' => $request->longitud_ramo,
+            'peso_ramo' => $request->peso_ramo,
             'empaque' => Empaque::find($request->id_empaque),
             'listado' => $listado,
             'fechas' => $fechas,
@@ -773,6 +800,7 @@ class PostcosechaController extends Controller
                 ->where('id_empaque', $request->empaque)
                 ->where('tallos_x_ramo', $request->tallos_x_ramo)
                 ->where('longitud_ramo', $request->longitud_ramo)
+                ->where('peso_ramo', $request->peso_ramo)
                 ->where('fecha', $data->fecha)
                 ->where('disponibles', '>', 0)
                 ->orderBy('disponibles')
@@ -801,6 +829,7 @@ class PostcosechaController extends Controller
                 $inventario->id_empaque = $d->id_empaque;
                 $inventario->tallos_x_ramo = $d->tallos_x_ramo;
                 $inventario->longitud_ramo = $d->longitud_ramo;
+                $inventario->peso_ramo = $d->peso_ramo;
                 $inventario->fecha = $data->fecha;
                 $inventario->cantidad = $d->cantidad;
                 $inventario->disponibles = $d->cantidad;
@@ -819,6 +848,7 @@ class PostcosechaController extends Controller
                 $basura->id_empaque = $model->id_empaque;
                 $basura->tallos_x_ramo = $model->tallos_x_ramo;
                 $basura->longitud_ramo = $model->longitud_ramo;
+                $basura->peso_ramo = $model->peso_ramo;
                 $basura->fecha = $data->fecha;
                 $basura->cantidad = $request->basura;
                 $basura->id_dato_exportacion = $model->id_dato_exportacion;
@@ -871,6 +901,7 @@ class PostcosechaController extends Controller
                         'e.nombre as pres_nombre',
                         'dc.tallos_x_ramo',
                         'dc.longitud_ramo',
+                        'dc.peso_ramo',
                     )->distinct()
                     ->where('p.estado', 1)
                     ->where('v.assorted', 0)
@@ -892,6 +923,7 @@ class PostcosechaController extends Controller
                         'e.nombre as pres_nombre',
                         'dc.tallos_x_ramo',
                         'dc.longitud_ramo',
+                        'dc.peso_ramo',
                     )->distinct()
                     ->where('p.estado', 1)
                     ->where('v.assorted', 1)
@@ -919,6 +951,7 @@ class PostcosechaController extends Controller
                         ->where('dc.id_empaque', $item->id_empaque)
                         ->where('dc.tallos_x_ramo', $item->tallos_x_ramo)
                         ->where('dc.longitud_ramo', $item->longitud_ramo)
+                        ->where('dc.peso_ramo', $item->peso_ramo)
                         ->where('p.fecha', $request->fecha)
                         ->get()[0]->cantidad;
                     $ramos += DB::table('proyecto as p')
@@ -933,6 +966,7 @@ class PostcosechaController extends Controller
                         ->where('dc.id_empaque', $item->id_empaque)
                         ->where('dc.tallos_x_ramo', $item->tallos_x_ramo)
                         ->where('m.longitud_ramo', $item->longitud_ramo)
+                        ->where('m.peso_ramo', $item->peso_ramo)
                         ->where('p.fecha', $request->fecha)
                         ->get()[0]->cantidad;
                     $ramos_inventario = DB::table('cuarto_frio')
@@ -943,6 +977,7 @@ class PostcosechaController extends Controller
                         ->where('id_empaque', $item->id_empaque)
                         ->where('tallos_x_ramo', $item->tallos_x_ramo)
                         ->where('longitud_ramo', $item->longitud_ramo)
+                        ->where('peso_ramo', $item->peso_ramo)
                         ->where('disponibles', '>', 0)
                         ->get()[0]->cantidad;
                     //dd($item->var_nombre . ', ' . $item->pres_nombre . ' ' . $item->tallos_x_ramo . ' tallos ' . $item->longitud_ramo . 'cm</b>"</p>', $ramos, $ramos_inventario);
@@ -952,6 +987,7 @@ class PostcosechaController extends Controller
                             ->where('id_empaque', '=', $item->id_empaque)
                             ->where('tallos_x_ramo', '=', $item->tallos_x_ramo)
                             ->where('longitud_ramo', '=', $item->longitud_ramo)
+                            ->where('peso_ramo', '=', $item->peso_ramo)
                             ->orderBy('fecha', 'asc')
                             ->get();
                         $pedido = $ramos;
@@ -1038,6 +1074,7 @@ class PostcosechaController extends Controller
             ->where('id_empaque_p', $request->empaque)
             ->where('tallos_x_ramo', $request->tallos_x_ramo)
             ->where('longitud_ramo', $request->longitud)
+            ->where('peso_ramo', $request->peso)
             ->orderBy('fecha_registro')
             ->get();
         return view('adminlte.gestion.comercializacion.postcosecha.partials.ver_cambios', [
@@ -1047,6 +1084,7 @@ class PostcosechaController extends Controller
             'empaque' => $empaque,
             'tallos_x_ramo' => $request->tallos_x_ramo,
             'longitud' => $request->longitud,
+            'peso' => $request->peso,
             'fecha' => $request->fecha,
             'pos_comb' => $request->pos,
             'pos_fecha' => $request->pos_f,
@@ -1059,6 +1097,7 @@ class PostcosechaController extends Controller
             ->where('id_empaque', $request->id_empaque_p)
             ->where('tallos_x_ramo', $request->tallos_x_ramo)
             ->where('longitud_ramo', $request->longitud_ramo)
+            ->where('peso_ramo', $request->peso_ramo)
             ->orderBy('fecha_registro')
             ->get();
 
@@ -1090,6 +1129,7 @@ class PostcosechaController extends Controller
                 ->where('dc.id_empaque', $request->id_empaque_p)
                 ->where('dc.tallos_x_ramo', $request->tallos_x_ramo)
                 ->where('dc.longitud_ramo', $request->longitud_ramo)
+                ->where('dc.peso_ramo', $request->peso_ramo)
                 ->where('cm.id_dato_exportacion', 1)
                 ->orderBy('cm.valor')
                 ->get();
@@ -1110,6 +1150,7 @@ class PostcosechaController extends Controller
                 ->where('dc.id_empaque', $request->id_empaque_p)
                 ->where('dc.tallos_x_ramo', $request->tallos_x_ramo)
                 ->where('dc.longitud_ramo', $request->longitud_ramo)
+                ->where('dc.peso_ramo', $request->peso_ramo)
                 ->where('cm.id_dato_exportacion', 1)
                 ->orderBy('cm.valor')
                 ->get();
@@ -1129,6 +1170,7 @@ class PostcosechaController extends Controller
                     ->where('dc.id_empaque', $request->id_empaque_p)
                     ->where('dc.tallos_x_ramo', $request->tallos_x_ramo)
                     ->where('dc.longitud_ramo', $request->longitud_ramo)
+                    ->where('dc.peso_ramo', $request->peso_ramo)
                     ->where('cm.id_dato_exportacion', 1)
                     ->where('cm.valor', $mar->marcacion)
                     ->get()[0]->cantidad;
@@ -1146,6 +1188,7 @@ class PostcosechaController extends Controller
                     ->where('dc.id_empaque', $request->id_empaque_p)
                     ->where('dc.tallos_x_ramo', $request->tallos_x_ramo)
                     ->where('m.longitud_ramo', $request->longitud_ramo)
+                    ->where('m.peso_ramo', $request->peso_ramo)
                     ->where('cm.id_dato_exportacion', 1)
                     ->where('cm.valor', $mar->marcacion)
                     ->get()[0]->cantidad;
@@ -1157,6 +1200,7 @@ class PostcosechaController extends Controller
                     ->where('id_empaque', $request->id_empaque_p)
                     ->where('tallos_x_ramo', $request->tallos_x_ramo)
                     ->where('longitud_ramo', $request->longitud_ramo)
+                    ->where('peso_ramo', $request->peso_ramo)
                     ->where('disponibles', '>', 0)
                     ->get()[0]->cantidad;
                 $pedidos = $ramos_solidos + $ramos_mixtos;
@@ -1178,6 +1222,7 @@ class PostcosechaController extends Controller
             'variedad' => Variedad::find($request->variedad),
             'tallos_x_ramo' => $request->tallos_x_ramo,
             'longitud_ramo' => $request->longitud_ramo,
+            'peso_ramo' => $request->peso_ramo,
             'presentacion' => Empaque::find($request->id_empaque_p),
         ]);
     }

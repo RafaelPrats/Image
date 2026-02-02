@@ -2,10 +2,10 @@
     <table class="table-bordered" style="width: 100%; border: 1px solid #9d9d9d; font-size: 1em" id="table_listado">
         <tr class="tr_fija_top_0">
             <th class="padding_lateral_5 th_yura_green">
-                Variedad
+                Planta
             </th>
             <th class="padding_lateral_5 th_yura_green">
-                Color
+                Variedad
             </th>
             <th class="padding_lateral_5 th_yura_green">
                 Presentacion
@@ -15,6 +15,9 @@
             </th>
             <th class="padding_lateral_5 th_yura_green" style="width: 60px">
                 Longitud
+            </th>
+            <th class="padding_lateral_5 th_yura_green" style="width: 60px">
+                Peso
             </th>
             @php
                 $totales_fecha = [];
@@ -77,7 +80,8 @@
                 onmouseleave="$(this).css('background-color', '')" id="tr_item_{{ $pos }}"
                 data-id_variedad="{{ $item['item']->id_variedad }}" data-id_empaque="{{ $item['item']->id_empaque }}"
                 data-tallos_x_ramo="{{ $item['item']->tallos_x_ramo }}"
-                data-longitud_ramo="{{ $item['item']->longitud_ramo }}">
+                data-longitud_ramo="{{ $item['item']->longitud_ramo }}"
+                data-peso_ramo="{{ $item['item']->peso_ramo }}">
                 <th class="padding_lateral_5"
                     style="border-color: {{ $color_texto }}; color: {{ $color_texto }}; background-color: {{ $color_fondo }}">
                     {{ $planta->nombre }}
@@ -97,6 +101,10 @@
                 <th class="padding_lateral_5"
                     style="border-color: {{ $color_texto }}; color: {{ $color_texto }}; background-color: {{ $color_fondo }}">
                     {{ $item['item']->longitud_ramo }}cm
+                </th>
+                <th class="padding_lateral_5"
+                    style="border-color: {{ $color_texto }}; color: {{ $color_texto }}; background-color: {{ $color_fondo }}">
+                    {{ $item['item']->peso_ramo }}gr
                 </th>
                 @php
                     $acumulado_pedido = 0;
@@ -225,7 +233,7 @@
             </script>
         @endforeach
         <tr class="tr_fija_bottom_0">
-            <th class="padding_lateral_5 th_yura_green" colspan="5">
+            <th class="padding_lateral_5 th_yura_green" colspan="6">
                 TOTALES
             </th>
             @foreach ($totales_fecha as $pos_f => $val)
@@ -267,6 +275,7 @@
             empaque: $('#tr_item_' + pos).data('id_empaque'),
             tallos_x_ramo: $('#tr_item_' + pos).data('tallos_x_ramo'),
             longitud: $('#tr_item_' + pos).data('longitud_ramo'),
+            peso: $('#tr_item_' + pos).data('peso_ramo'),
             pedidos: $('#btn_pedidos_' + pos + '_' + pos_f).data('valor'),
             actuales: $('#btn_actuales_' + pos + '_' + pos_f).data('valor'),
             saldo: $('#btn_saldo_' + pos + '_' + pos_f).data('valor'),
@@ -287,6 +296,7 @@
             empaque: $('#tr_item_' + pos).data('id_empaque'),
             tallos_x_ramo: $('#tr_item_' + pos).data('tallos_x_ramo'),
             longitud: $('#tr_item_' + pos).data('longitud_ramo'),
+            peso: $('#tr_item_' + pos).data('peso_ramo'),
             dias: $('#filtro_dias').val(),
             pos: pos,
         };
@@ -303,6 +313,7 @@
             variedad: $('#tr_item_' + pos).data('id_variedad'),
             tallos_x_ramo: $('#tr_item_' + pos).data('tallos_x_ramo'),
             longitud_ramo: $('#tr_item_' + pos).data('longitud_ramo'),
+            peso_ramo: $('#tr_item_' + pos).data('peso_ramo'),
             id_empaque_p: $('#tr_item_' + pos).data('id_empaque'),
             planta: $('#filtro_planta').val(),
             pos_comb: pos
@@ -322,6 +333,7 @@
             variedad: $('#tr_item_' + pos).data('id_variedad'),
             tallos_x_ramo: $('#tr_item_' + pos).data('tallos_x_ramo'),
             longitud_ramo: $('#tr_item_' + pos).data('longitud_ramo'),
+            peso_ramo: $('#tr_item_' + pos).data('peso_ramo'),
             id_empaque_p: $('#tr_item_' + pos).data('id_empaque'),
             id_marcacion: id_marcacion,
             valor_marcacion: valor_marcacion,
@@ -340,6 +352,7 @@
             variedad: $('#tr_item_' + pos).data('id_variedad'),
             tallos_x_ramo: $('#tr_item_' + pos).data('tallos_x_ramo'),
             longitud_ramo: $('#tr_item_' + pos).data('longitud_ramo'),
+            peso_ramo: $('#tr_item_' + pos).data('peso_ramo'),
             id_empaque: $('#tr_item_' + pos).data('id_empaque'),
             planta: $('#filtro_planta').val(),
         };
@@ -376,6 +389,7 @@
             empaque: $('#tr_item_' + pos).data('id_empaque'),
             tallos_x_ramo: $('#tr_item_' + pos).data('tallos_x_ramo'),
             longitud: $('#tr_item_' + pos).data('longitud_ramo'),
+            peso: $('#tr_item_' + pos).data('peso_ramo'),
             fecha: $('#th_fecha_' + pos_f).data('fecha'),
             pos: pos,
             pos_f: pos_f,
@@ -408,6 +422,7 @@
             variedad: $('#tr_item_' + pos).data('id_variedad'),
             tallos_x_ramo: $('#tr_item_' + pos).data('tallos_x_ramo'),
             longitud_ramo: $('#tr_item_' + pos).data('longitud_ramo'),
+            peso_ramo: $('#tr_item_' + pos).data('peso_ramo'),
             id_empaque_p: $('#tr_item_' + pos).data('id_empaque'),
             planta: $('#filtro_planta').val(),
             pos_comb: pos

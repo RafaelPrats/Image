@@ -6,10 +6,10 @@
                 PIEZAS
             </th>
             <th class="text-center th_yura_green" style="min-width: 100px">
-                VARIEDAD
+                PLANTA
             </th>
             <th class="text-center th_yura_green" style="min-width: 90px">
-                COLOR
+                VARIEDAD
             </th>
             <th class="text-center th_yura_green" style="min-width: 160px">
                 CAJA
@@ -31,6 +31,9 @@
             </th>
             <th class="text-center th_yura_green" style="min-width: 80px">
                 LONGITUD
+            </th>
+            <th class="text-center th_yura_green" style="min-width: 80px">
+                PESO
             </th>
             <th class="text-center th_yura_green" style="min-width: 60px">
                 PRECIO

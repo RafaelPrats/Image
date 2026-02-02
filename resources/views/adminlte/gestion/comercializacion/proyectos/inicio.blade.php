@@ -49,7 +49,7 @@
                 <td class="text-center" style="border-color: #9d9d9d">
                     <div class="input-group">
                         <span class="input-group-addon bg-yura_dark">
-                            Flor
+                            Planta
                         </span>
                         <select name="filtro_planta" id="filtro_planta" class="form-control" style="width: 100%"
                             onchange="select_planta($(this).val(), 'filtro_variedad', 'td_cargar_variedades', '<option value=>Todos</option>', '')">
@@ -63,7 +63,7 @@
                 <td class="text-center" style="border-color: #9d9d9d" id="td_cargar_variedades">
                     <div class="input-group">
                         <span class="input-group-addon bg-yura_dark">
-                            Color
+                            Variedad
                         </span>
                         <select name="filtro_variedad" id="filtro_variedad" class="form-control" style="width: 100%">
                             <option value="">Todos</option>

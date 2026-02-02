@@ -6,6 +6,7 @@
             variedad: $('#filtro_variedad').val(),
             tipo_caja: $('#filtro_tipo_caja').val(),
             longitud: $('#filtro_longitud').val(),
+            peso: $('#filtro_peso').val(),
         };
         if (datos['cliente'] != '')
             get_jquery('{{ url('especificaciones/listar_reporte') }}', datos, function(retorno) {

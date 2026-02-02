@@ -4,7 +4,7 @@
             <td>
                 <div class="input-group" style="min-width: 220px">
                     <span class="input-group-addon bg-yura_dark">
-                        Variedad
+                        Planta
                     </span>
                     <select id="form_planta" class="form-control" style="width: 100%"
                         onchange="select_planta($(this).val(), 'form_variedad', 'form_variedad', '<option value=>Todos</option>', ''); buscar_form_especificaciones()">
@@ -15,7 +15,7 @@
             <td>
                 <div class="input-group" style="min-width: 220px">
                     <span class="input-group-addon bg-yura_dark">
-                        Color
+                        Variedad
                     </span>
                     <select id="form_variedad" class="form-control" style="width: 100%"
                         onchange="buscar_form_especificaciones()">
@@ -46,6 +46,14 @@
                         Longitud
                     </span>
                     <input type="number" id="form_longitud" class="form-control text-center" style="width: 100%">
+                </div>
+            </td>
+            <td>
+                <div class="input-group" style="min-width: 180px">
+                    <span class="input-group-addon bg-yura_dark">
+                        Peso
+                    </span>
+                    <input type="number" id="form_peso" class="form-control text-center" style="width: 100%">
                     <div class="input-group-btn">
                         <button class="btn btn-yura_dark" onclick="buscar_form_especificaciones()">
                             <i class="fa fa-fw fa-search"></i>

@@ -2,7 +2,7 @@
     <legend style="font-size: 1.1em; margin-bottom: 5px" class="text-center">
         Seleccione la MARCACION para los <b>{{ $armar }}</b> ramos de <b>{{ $variedad->nombre }}</b>
         <br>
-        <b>{{ $presentacion->nombre }}</b>, <b>{{ $longitud_ramo }}cm</b>, <b>{{ $tallos_x_ramo }}</b> tallos x ramo
+        <b>{{ $presentacion->nombre }}</b>, <b>{{ $longitud_ramo }}cm</b>, <b>{{ $peso_ramo }}gr</b>, <b>{{ $tallos_x_ramo }}</b> tallos x ramo
     </legend>
     <table class="table table-bordered" style="width: 100%; border: 1px solid #9d9d9d">
         <tr class="mouse-hand" onmouseover="$(this).addClass('bg-yura_dark')"

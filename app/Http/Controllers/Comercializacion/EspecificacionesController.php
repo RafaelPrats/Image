@@ -51,6 +51,8 @@ class EspecificacionesController extends Controller
             $listado = $listado->where('especificaciones.id_variedad', $request->variedad);
         if ($request->longitud != '')
             $listado = $listado->where('especificaciones.longitud_ramo', $request->longitud);
+        if ($request->peso != '')
+            $listado = $listado->where('especificaciones.peso_ramo', $request->peso);
         if ($request->tipo_caja != '')
             $listado = $listado->where('c.siglas', $request->tipo_caja);
         $listado = $listado->get();
@@ -127,6 +129,7 @@ class EspecificacionesController extends Controller
                     $model->ramos_x_caja = $data->ramos_x_caja;
                     $model->tallos_x_ramos = $data->tallos_x_ramos;
                     $model->longitud_ramo = $data->longitud;
+                    $model->peso_ramo = $data->peso;
                     $model->id_cliente = $request->cliente;
                     $model->save();
                     $model->id_especificaciones = DB::table('especificaciones')
@@ -167,6 +170,7 @@ class EspecificacionesController extends Controller
                 $model->ramos_x_caja = $data->ramos_x_caja;
                 $model->tallos_x_ramos = $data->tallos_x_ramos;
                 $model->longitud_ramo = $data->longitud_ramo;
+                $model->peso_ramo = $data->peso_ramo;
                 $model->save();
                 bitacora('especificaciones', $model->id_especificaciones, 'U', 'MODIFICAR la ESPECIFICACION');
             }

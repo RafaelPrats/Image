@@ -26,6 +26,10 @@
     style="border-color: {{ $color_texto }}; color: {{ $color_texto }}; background-color: {{ $color_fondo }}">
     {{ $longitud_ramo }}cm
 </th>
+<th class="padding_lateral_5"
+    style="border-color: {{ $color_texto }}; color: {{ $color_texto }}; background-color: {{ $color_fondo }}">
+    {{ $peso_ramo }}gr
+</th>
 @php
     $acumulado_pedido = 0;
     $total_inventario = $ramos_inventario;

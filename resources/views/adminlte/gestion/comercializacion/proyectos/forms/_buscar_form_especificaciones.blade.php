@@ -33,6 +33,9 @@
                 <th class="text-center th_yura_green" style="min-width: 120px">
                     LONGITUD
                 </th>
+                <th class="text-center th_yura_green" style="min-width: 120px">
+                    PESO
+                </th>
                 <th class="text-center th_yura_green" style="min-width: 60px">
                     PRECIO
                     <input type="number" style="width: 100%; color: black" class="text-center" min="0"
@@ -41,8 +44,9 @@
                 @foreach ($datos_exportacion as $dat_exp)
                     <th class="text-center bg-yura_dark" style="min-width: 100px">
                         {{ $dat_exp->nombre }}
-                        <input type="text" style="width: 100%; color: black" class="text-center form_input_all_marcacion"
-                            min="0" data-id_dato_exportacion="{{ $dat_exp->id_dato_exportacion }}"
+                        <input type="text" style="width: 100%; color: black"
+                            class="text-center form_input_all_marcacion" min="0"
+                            data-id_dato_exportacion="{{ $dat_exp->id_dato_exportacion }}"
                             id="form_input_all_marcacion_{{ $dat_exp->id_dato_exportacion }}"
                             onchange="set_all_marcacion('{{ $dat_exp->id_dato_exportacion }}')"
                             onkeyup="set_all_marcacion('{{ $dat_exp->id_dato_exportacion }}')">
@@ -99,6 +103,10 @@
                     <td class="text-center" style="border-color: #9d9d9d">
                         <input type="text" style="width: 100%; color: black" class="text-center"
                             id="form_longitud_{{ $item->id_especificaciones }}" value="{{ $item->longitud_ramo }}">
+                    </td>
+                    <td class="text-center" style="border-color: #9d9d9d">
+                        <input type="text" style="width: 100%; color: black" class="text-center"
+                            id="form_peso_{{ $item->id_especificaciones }}" value="{{ $item->peso_ramo }}">
                     </td>
                     <td class="text-center" style="border-color: #9d9d9d">
                         <input type="number" style="width: 100%; color: black"
@@ -178,6 +186,7 @@
         tallos_x_ramos = $('#form_tallos_x_ramos_' + id_esp).val();
         total_tallos = $('#form_total_tallos_' + id_esp).val();
         longitud = $('#form_longitud_' + id_esp).val();
+        peso = $('#form_peso_' + id_esp).val();
         precio_esp = $('#form_precio_esp_' + id_esp).val();
 
         form_cant_detalles++;
@@ -214,6 +223,8 @@
             'value = "' + presentacion + '" > ' +
             '<input type="hidden" id="ped_longitud_' + form_cant_detalles + '" ' +
             'value = "' + longitud + '" > ' +
+            '<input type="hidden" id="ped_peso_' + form_cant_detalles + '" ' +
+            'value = "' + peso + '" > ' +
             '</td>' +
             '<td class="text-center padding_lateral_5" style="border-color: #9d9d9d">' +
             nombre_planta +
@@ -249,6 +260,9 @@
             '</td>' +
             '<td class="text-center padding_lateral_5" style="border-color: #9d9d9d">' +
             longitud + 'cm' +
+            '</td>' +
+            '<td class="text-center padding_lateral_5" style="border-color: #9d9d9d">' +
+            peso + 'gr' +
             '</td>' +
             '<td class="text-center" style="border-color: #9d9d9d">' +
             '<input type="number" style="width: 100%; color: black" class="text-center" ' +

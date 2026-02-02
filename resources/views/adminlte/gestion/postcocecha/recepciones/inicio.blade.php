@@ -48,7 +48,7 @@
                 <td class="text-center padding_lateral_5" style="border-color: #9d9d9d">
                     <div class="input-group">
                         <span class="input-group-addon bg-yura_dark span-input-group-yura-fixed">
-                            Variedad
+                            Planta
                         </span>
                         <select name="filtro_planta" id="filtro_planta" class="input-yura_default form-control"
                             style="width: 100%"

@@ -122,12 +122,10 @@
                     <td style="border: 1px solid black; font-size: 0.7em;">COLOR</td>
                     <td style="border: 1px solid black; font-size: 0.7em">PRES.</td>
                     <td style="border: 1px solid black; font-size: 0.7em">STEMS</td>
-                    <td style="border: 1px solid black; font-size: 0.7em">90</td>
+                    <td style="border: 1px solid black; font-size: 0.7em">PESO</td>
                     <td style="border: 1px solid black; font-size: 0.7em">80</td>
                     <td style="border: 1px solid black; font-size: 0.7em">70</td>
                     <td style="border: 1px solid black; font-size: 0.7em">60</td>
-                    <td style="border: 1px solid black; font-size: 0.7em">50</td>
-                    <td style="border: 1px solid black; font-size: 0.7em">Nac.</td>
                     <td style="border: 1px solid black; font-size: 0.7em">BUNCH/ Box</td>
                     <td style="border: 1px solid black; font-size: 0.7em">BUNCHS</td>
                     <td style="border: 1px solid black; font-size: 0.7em">T. STEMS</td>
@@ -208,9 +206,7 @@
                                     </td>
                                     <td
                                         style="padding-left: 5px;font-size:11px;border:1px solid black;text-align:center">
-                                        @if ($det_caja->longitud_ramo == 90)
-                                            {{ $disAssorted->ramos * $caja->cantidad }}
-                                        @endif
+                                        {{ $det_caja->peso_ramo }}gr
                                     </td>
                                     <td
                                         style="padding-left: 5px;font-size:11px;border:1px solid black;text-align:center">
@@ -227,18 +223,6 @@
                                     <td
                                         style="padding-left: 5px;font-size:11px;border:1px solid black;text-align:center">
                                         @if ($det_caja->longitud_ramo == 60)
-                                            {{ $disAssorted->ramos * $caja->cantidad }}
-                                        @endif
-                                    </td>
-                                    <td
-                                        style="padding-left: 5px;font-size:11px;border:1px solid black;text-align:center">
-                                        @if ($det_caja->longitud_ramo == 50)
-                                            {{ $disAssorted->ramos * $caja->cantidad }}
-                                        @endif
-                                    </td>
-                                    <td
-                                        style="padding-left: 5px;font-size:11px;border:1px solid black;text-align:center">
-                                        @if ($det_caja->longitud_ramo == 0)
                                             {{ $disAssorted->ramos * $caja->cantidad }}
                                         @endif
                                     </td>
@@ -310,9 +294,7 @@
                                     {{ $det_caja->tallos_x_ramo }}
                                 </td>
                                 <td style="padding-left: 5px;font-size:11px;border:1px solid black;text-align:center">
-                                    @if ($det_caja->longitud_ramo == 90)
-                                        {{ $caja->cantidad * $det_caja->ramos_x_caja }}
-                                    @endif
+                                    {{ $det_caja->peso_ramo }}gr
                                 </td>
                                 <td style="padding-left: 5px;font-size:11px;border:1px solid black;text-align:center">
                                     @if ($det_caja->longitud_ramo == 80)
@@ -326,16 +308,6 @@
                                 </td>
                                 <td style="padding-left: 5px;font-size:11px;border:1px solid black;text-align:center">
                                     @if ($det_caja->longitud_ramo == 60)
-                                        {{ $caja->cantidad * $det_caja->ramos_x_caja }}
-                                    @endif
-                                </td>
-                                <td style="padding-left: 5px;font-size:11px;border:1px solid black;text-align:center">
-                                    @if ($det_caja->longitud_ramo == 50)
-                                        {{ $caja->cantidad * $det_caja->ramos_x_caja }}
-                                    @endif
-                                </td>
-                                <td style="padding-left: 5px;font-size:11px;border:1px solid black;text-align:center">
-                                    @if ($det_caja->longitud_ramo == 0)
                                         {{ $caja->cantidad * $det_caja->ramos_x_caja }}
                                     @endif
                                 </td>
@@ -359,8 +331,6 @@
                 <tr>
                     <td style="padding-left: 5px;font-size:11px;border:1px solid black;text-align:right"
                         colspan="{{ count($datosExportacion) + 6 }}">Total</td>
-                    <td></td>
-                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>

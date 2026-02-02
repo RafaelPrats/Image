@@ -238,6 +238,7 @@
             caja: $('#form_caja').val(),
             ramos_x_caja: $('#form_ramos_x_caja').val(),
             longitud: $('#form_longitud').val(),
+            peso: $('#form_peso').val(),
         };
         if (datos['cliente'] != '' && datos['planta'] != '')
             get_jquery('{{ url('proyectos/buscar_form_especificaciones') }}', datos, function(retorno) {
@@ -410,6 +411,7 @@
                     variedad = $('#ped_variedad_' + num_pos + '_' + c).val();
                     presentacion = $('#ped_presentacion_' + num_pos + '_' + c).val();
                     longitud = $('#ped_longitud_' + num_pos + '_' + c).val();
+                    peso = $('#ped_peso_' + num_pos + '_' + c).val();
                     ramos_x_caja = $('#ped_ramos_x_caja_' + num_pos + '_' + c).val();
                     tallos_x_ramos = $('#ped_tallos_x_ramos_' + num_pos + '_' + c).val();
                     precio_ped = $('#ped_precio_esp_' + num_pos + '_' + c).val();
@@ -423,6 +425,7 @@
                             variedad: variedad,
                             presentacion: presentacion,
                             longitud: longitud,
+                            peso: peso,
                             ramos_x_caja: ramos_x_caja,
                             tallos_x_ramos: tallos_x_ramos,
                             precio_ped: precio_ped,
@@ -461,6 +464,7 @@
                 variedad = $('#ped_variedad_' + num_pos).val();
                 presentacion = $('#ped_presentacion_' + num_pos).val();
                 longitud = $('#ped_longitud_' + num_pos).val();
+                peso = $('#ped_peso_' + num_pos).val();
                 ramos_x_caja = $('#ped_ramos_x_caja_' + num_pos).val();
                 tallos_x_ramos = $('#ped_tallos_x_ramos_' + num_pos).val();
                 precio_ped = $('#ped_precio_esp_' + num_pos).val();
@@ -486,6 +490,7 @@
                         variedad: variedad,
                         presentacion: presentacion,
                         longitud: longitud,
+                        peso: peso,
                         ramos_x_caja: ramos_x_caja,
                         tallos_x_ramos: tallos_x_ramos,
                         precio_ped: precio_ped,

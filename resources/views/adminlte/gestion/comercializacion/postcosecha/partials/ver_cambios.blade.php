@@ -1,6 +1,6 @@
 <legend class="text-center" style="width: 100%; font-size: 1.3em; margin-bottom: 5px">
     Cambios en ventas de <b>{{ $planta->nombre }}-{{ $variedad->nombre }}, {{ $empaque->nombre }} de
-        {{ $tallos_x_ramo }} tallos {{ $longitud }}cm</b> el <b>{{ $fecha }}</b>
+        {{ $tallos_x_ramo }} tallos {{ $longitud }}cm {{ $peso }}gr</b> el <b>{{ $fecha }}</b>
 </legend>
 <table class="table-bordered" style="width: 100%; border: 1px solid #9d9d9d">
     <tr>

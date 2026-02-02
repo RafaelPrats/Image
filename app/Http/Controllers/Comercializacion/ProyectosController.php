@@ -122,6 +122,7 @@ class ProyectosController extends Controller
                         'det.tallos_x_ramo',
                         'det.precio',
                         'det.longitud_ramo',
+                        'det.peso_ramo',
                         'pres.nombre as nombre_presentacion',
                         'v.nombre as nombre_variedad',
                         'p.nombre as nombre_planta',
@@ -287,12 +288,15 @@ class ProyectosController extends Controller
             $listado = $listado->where('e.ramos_x_caja', $request->ramos_x_caja);
         if ($request->longitud != '')
             $listado = $listado->where('e.longitud_ramo', $request->longitud);
+        if ($request->peso != '')
+            $listado = $listado->where('e.peso_ramo', $request->peso);
         $listado = $listado->orderBy('p.nombre')
             ->orderBy('v.nombre')
             ->orderBy('c.nombre')
             ->orderBy('pres.nombre')
             ->get();
         $datos_exportacion = DatosExportacion::where('estado', 1)->get();
+
 
         return view('adminlte.gestion.comercializacion.proyectos.forms._buscar_form_especificaciones', [
             'listado' => $listado,
@@ -501,6 +505,7 @@ class ProyectosController extends Controller
                             'id_planta' => $detalle->variedad->id_planta,
                             'id_empaque' => $detalle->id_empaque,
                             'longitud_ramo' => $detalle->longitud_ramo,
+                            'peso_ramo' => $detalle->peso_ramo,
                             'ramos_x_caja' => $detalle->ramos_x_caja,
                             'tallos_x_ramo' => $detalle->tallos_x_ramo,
                             'precio' => $detalle->precio,
@@ -511,7 +516,8 @@ class ProyectosController extends Controller
                         if (
                             $detalle->id_variedad != $det_caj->variedad ||
                             $detalle->id_empaque != $det_caj->presentacion ||
-                            $detalle->longitud_ramo != $det_caj->longitud
+                            $detalle->longitud_ramo != $det_caj->longitud ||
+                            $detalle->peso_ramo != $det_caj->peso
                         ) {
                             $tiene_cambios = true;
                         }
@@ -529,6 +535,7 @@ class ProyectosController extends Controller
                     $detalle->tallos_x_ramo = $det_caj->tallos_x_ramos;
                     $detalle->precio = $det_caj->precio_ped;
                     $detalle->longitud_ramo = $det_caj->longitud;
+                    $detalle->peso_ramo = $det_caj->peso;
                     $detalle->save();
 
                     // GRABAR CAMBIOS
@@ -552,6 +559,7 @@ class ProyectosController extends Controller
                                     $pedidoModificacion->ramos_x_caja = $detalle->ramos_x_caja;
                                     $pedidoModificacion->tallos_x_ramo = $detalle->tallos_x_ramo;
                                     $pedidoModificacion->longitud_ramo = $detalle->longitud_ramo;
+                                    $pedidoModificacion->peso_ramo = $detalle->peso_ramo;
                                     $pedidoModificacion->id_empaque_p = $detalle->id_empaque;
                                     $pedidoModificacion->id_empaque_c = $caja->id_empaque;
                                     $pedidoModificacion->save();
@@ -575,6 +583,7 @@ class ProyectosController extends Controller
                                                 $pedidoModificacion->ramos_x_caja = $detalle->ramos_x_caja;
                                                 $pedidoModificacion->tallos_x_ramo = $detalle->tallos_x_ramo;
                                                 $pedidoModificacion->longitud_ramo = $detalle->longitud_ramo;
+                                                $pedidoModificacion->peso_ramo = $detalle->peso_ramo;
                                                 $pedidoModificacion->id_empaque_p = $detalle->id_empaque;
                                                 $pedidoModificacion->id_empaque_c = $caja->id_empaque;
                                                 $pedidoModificacion->save();
@@ -615,6 +624,7 @@ class ProyectosController extends Controller
                                 $pedidoModificacion->ramos_x_caja = $detalle->ramos_x_caja;
                                 $pedidoModificacion->tallos_x_ramo = $detalle->tallos_x_ramo;
                                 $pedidoModificacion->longitud_ramo = $detalle->longitud_ramo;
+                                $pedidoModificacion->peso_ramo = $detalle->peso_ramo;
                                 $pedidoModificacion->id_empaque_p = $detalle->id_empaque;
                                 $pedidoModificacion->id_empaque_c = $caja->id_empaque;
                                 $pedidoModificacion->cambio_fecha = 1;
@@ -639,6 +649,7 @@ class ProyectosController extends Controller
                                             $pedidoModificacion->ramos_x_caja = $detalle->ramos_x_caja;
                                             $pedidoModificacion->tallos_x_ramo = $detalle->tallos_x_ramo;
                                             $pedidoModificacion->longitud_ramo = $detalle->longitud_ramo;
+                                            $pedidoModificacion->peso_ramo = $detalle->peso_ramo;
                                             $pedidoModificacion->id_empaque_p = $detalle->id_empaque;
                                             $pedidoModificacion->id_empaque_c = $caja->id_empaque;
                                             $pedidoModificacion->cambio_fecha = 1;
@@ -661,6 +672,7 @@ class ProyectosController extends Controller
                                 $pedidoModificacion->ramos_x_caja = $detalle->ramos_x_caja;
                                 $pedidoModificacion->tallos_x_ramo = $detalle->tallos_x_ramo;
                                 $pedidoModificacion->longitud_ramo = $detalle->longitud_ramo;
+                                $pedidoModificacion->peso_ramo = $detalle->peso_ramo;
                                 $pedidoModificacion->id_empaque_p = $detalle->id_empaque;
                                 $pedidoModificacion->id_empaque_c = $caja->id_empaque;
                                 $pedidoModificacion->cambio_fecha = 1;
@@ -685,6 +697,7 @@ class ProyectosController extends Controller
                                             $pedidoModificacion->ramos_x_caja = $detalle->ramos_x_caja;
                                             $pedidoModificacion->tallos_x_ramo = $detalle->tallos_x_ramo;
                                             $pedidoModificacion->longitud_ramo = $detalle->longitud_ramo;
+                                            $pedidoModificacion->peso_ramo = $detalle->peso_ramo;
                                             $pedidoModificacion->id_empaque_p = $detalle->id_empaque;
                                             $pedidoModificacion->id_empaque_c = $caja->id_empaque;
                                             $pedidoModificacion->cambio_fecha = 1;
@@ -734,6 +747,7 @@ class ProyectosController extends Controller
                             $pedidoModificacion->ramos_x_caja = $detalleOriginal['ramos_x_caja'];
                             $pedidoModificacion->tallos_x_ramo = $detalleOriginal['tallos_x_ramo'];
                             $pedidoModificacion->longitud_ramo = $detalleOriginal['longitud_ramo'];
+                            $pedidoModificacion->peso_ramo = $detalleOriginal['peso_ramo'];
                             $pedidoModificacion->id_empaque_p = $detalleOriginal['id_empaque'];
                             $pedidoModificacion->id_empaque_c = $cajaOriginal->id_empaque;
                             $pedidoModificacion->save();
@@ -758,6 +772,7 @@ class ProyectosController extends Controller
                                         $pedidoModificacion->ramos_x_caja = $detalleOriginal['ramos_x_caja'];
                                         $pedidoModificacion->tallos_x_ramo = $detalleOriginal['tallos_x_ramo'];
                                         $pedidoModificacion->longitud_ramo = $detalleOriginal['longitud_ramo'];
+                                        $pedidoModificacion->peso_ramo = $detalleOriginal['peso_ramo'];
                                         $pedidoModificacion->id_empaque_p = $detalleOriginal['id_empaque'];
                                         $pedidoModificacion->id_empaque_c = $cajaOriginal->id_empaque;
                                         $pedidoModificacion->save();
@@ -783,6 +798,7 @@ class ProyectosController extends Controller
                             $pedidoModificacion->ramos_x_caja = $detalle->ramos_x_caja;
                             $pedidoModificacion->tallos_x_ramo = $detalle->tallos_x_ramo;
                             $pedidoModificacion->longitud_ramo = $detalle->longitud_ramo;
+                            $pedidoModificacion->peso_ramo = $detalle->peso_ramo;
                             $pedidoModificacion->id_empaque_p = $detalle->id_empaque;
                             $pedidoModificacion->id_empaque_c = $caja->id_empaque;
                             $pedidoModificacion->save();
@@ -828,6 +844,7 @@ class ProyectosController extends Controller
                         $pedidoModificacion->ramos_x_caja = $detalle->ramos_x_caja;
                         $pedidoModificacion->tallos_x_ramo = $detalle->tallos_x_ramo;
                         $pedidoModificacion->longitud_ramo = $detalle->longitud_ramo;
+                        $pedidoModificacion->peso_ramo = $detalle->peso_ramo;
                         $pedidoModificacion->id_empaque_p = $detalle->id_empaque;
                         $pedidoModificacion->id_empaque_c = $caja->id_empaque;
                         $pedidoModificacion->save();
@@ -852,6 +869,7 @@ class ProyectosController extends Controller
                                     $pedidoModificacion->ramos_x_caja = $detalle->ramos_x_caja;
                                     $pedidoModificacion->tallos_x_ramo = $detalle->tallos_x_ramo;
                                     $pedidoModificacion->longitud_ramo = $detalle->longitud_ramo;
+                                    $pedidoModificacion->peso_ramo = $detalle->peso_ramo;
                                     $pedidoModificacion->id_empaque_p = $detalle->id_empaque;
                                     $pedidoModificacion->id_empaque_c = $caja->id_empaque;
                                     $pedidoModificacion->save();
@@ -914,6 +932,7 @@ class ProyectosController extends Controller
                         $pedidoModificacion->ramos_x_caja = $detalle->ramos_x_caja;
                         $pedidoModificacion->tallos_x_ramo = $detalle->tallos_x_ramo;
                         $pedidoModificacion->longitud_ramo = $detalle->longitud_ramo;
+                        $pedidoModificacion->peso_ramo = $detalle->peso_ramo;
                         $pedidoModificacion->id_empaque_p = $detalle->id_empaque;
                         $pedidoModificacion->id_empaque_c = $caja->id_empaque;
                         $pedidoModificacion->save();
@@ -938,6 +957,7 @@ class ProyectosController extends Controller
                                     $pedidoModificacion->ramos_x_caja = $detalle->ramos_x_caja;
                                     $pedidoModificacion->tallos_x_ramo = $detalle->tallos_x_ramo;
                                     $pedidoModificacion->longitud_ramo = $detalle->longitud_ramo;
+                                    $pedidoModificacion->peso_ramo = $detalle->peso_ramo;
                                     $pedidoModificacion->id_empaque_p = $detalle->id_empaque;
                                     $pedidoModificacion->id_empaque_c = $caja->id_empaque;
                                     $pedidoModificacion->save();
@@ -1327,6 +1347,7 @@ class ProyectosController extends Controller
                         $detalle->tallos_x_ramo = $det_caj->tallos_x_ramo;
                         $detalle->precio = $det_caj->precio;
                         $detalle->longitud_ramo = $det_caj->longitud_ramo;
+                        $detalle->peso_ramo = $det_caj->peso_ramo;
                         $detalle->save();
 
                         $fecha = $d;
@@ -1345,6 +1366,7 @@ class ProyectosController extends Controller
                             $pedidoModificacion->ramos_x_caja = $detalle->ramos_x_caja;
                             $pedidoModificacion->tallos_x_ramo = $detalle->tallos_x_ramo;
                             $pedidoModificacion->longitud_ramo = $detalle->longitud_ramo;
+                            $pedidoModificacion->peso_ramo = $detalle->peso_ramo;
                             $pedidoModificacion->id_empaque_p = $detalle->id_empaque;
                             $pedidoModificacion->id_empaque_c = $caja->id_empaque;
                             $pedidoModificacion->save();

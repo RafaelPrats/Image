@@ -106,10 +106,10 @@
                         PIEZAS
                     </th>
                     <th class="text-center th_yura_green" style="min-width: 100px">
-                        VARIEDAD
+                        PLANTA
                     </th>
                     <th class="text-center th_yura_green" style="min-width: 90px">
-                        COLOR
+                        VARIEDAD
                     </th>
                     <th class="text-center th_yura_green" style="min-width: 160px">
                         CAJA
@@ -131,6 +131,9 @@
                     </th>
                     <th class="text-center th_yura_green" style="min-width: 80px">
                         LONGITUD
+                    </th>
+                    <th class="text-center th_yura_green" style="min-width: 80px">
+                        PESO
                     </th>
                     <th class="text-center th_yura_green" style="min-width: 60px">
                         PRECIO
@@ -253,6 +256,10 @@
                                 <td class="text-center" style="border-color: #9d9d9d">
                                     <input type="number" style="width: 100%; color: black" class="text-center"
                                         id="ped_longitud_{{ $pos_c + 1 }}" value="{{ $detalle->longitud_ramo }}">
+                                </td>
+                                <td class="text-center" style="border-color: #9d9d9d">
+                                    <input type="number" style="width: 100%; color: black" class="text-center"
+                                        id="ped_peso_{{ $pos_c + 1 }}" value="{{ $detalle->peso_ramo }}">
                                 </td>
                                 <td class="text-center" style="border-color: #9d9d9d">
                                     <input type="number" style="width: 100%; color: black" class="text-center"
@@ -396,6 +403,11 @@
                                     <input type="number" style="width: 100%; color: black" class="text-center"
                                         id="ped_longitud_{{ $pos_c + 1 }}_{{ $pos_d }}"
                                         value="{{ $detalle->longitud_ramo }}">
+                                </td>
+                                <td class="text-center" style="border-color: #9d9d9d">
+                                    <input type="number" style="width: 100%; color: black" class="text-center"
+                                        id="ped_peso_{{ $pos_c + 1 }}_{{ $pos_d }}"
+                                        value="{{ $detalle->peso_ramo }}">
                                 </td>
                                 <td class="text-center" style="border-color: #9d9d9d">
                                     <input type="number" style="width: 100%; color: black" class="text-center"
@@ -674,6 +686,7 @@
                     variedad = $('#ped_variedad_' + num_pos + '_' + c).val();
                     presentacion = $('#ped_presentacion_' + num_pos + '_' + c).val();
                     longitud = $('#ped_longitud_' + num_pos + '_' + c).val();
+                    peso = $('#ped_peso_' + num_pos + '_' + c).val();
                     ramos_x_caja = $('#ped_ramos_x_caja_' + num_pos + '_' + c).val();
                     tallos_x_ramos = $('#ped_tallos_x_ramos_' + num_pos + '_' + c).val();
                     precio_ped = $('#ped_precio_esp_' + num_pos + '_' + c).val();
@@ -688,6 +701,7 @@
                             variedad: variedad,
                             presentacion: presentacion,
                             longitud: longitud,
+                            peso: peso,
                             ramos_x_caja: ramos_x_caja,
                             tallos_x_ramos: tallos_x_ramos,
                             precio_ped: precio_ped,
@@ -730,6 +744,7 @@
                 variedad = $('#ped_variedad_' + num_pos).val();
                 presentacion = $('#ped_presentacion_' + num_pos).val();
                 longitud = $('#ped_longitud_' + num_pos).val();
+                peso = $('#ped_peso_' + num_pos).val();
                 ramos_x_caja = $('#ped_ramos_x_caja_' + num_pos).val();
                 tallos_x_ramos = $('#ped_tallos_x_ramos_' + num_pos).val();
                 precio_ped = $('#ped_precio_esp_' + num_pos).val();
@@ -756,6 +771,7 @@
                         variedad: variedad,
                         presentacion: presentacion,
                         longitud: longitud,
+                        peso: peso,
                         ramos_x_caja: ramos_x_caja,
                         tallos_x_ramos: tallos_x_ramos,
                         precio_ped: precio_ped,

@@ -117,6 +117,7 @@ class jobStoreProyecto implements ShouldQueue
                     $detalle->tallos_x_ramo = $det_caj->tallos_x_ramos;
                     $detalle->precio = $det_caj->precio_ped;
                     $detalle->longitud_ramo = $det_caj->longitud;
+                    $detalle->peso_ramo = $det_caj->peso;
                     $detalle->save();
 
                     /* TABLA PEDIDO_CONFIRMACION */
@@ -146,6 +147,7 @@ class jobStoreProyecto implements ShouldQueue
                         $pedidoModificacion->ramos_x_caja = $detalle->ramos_x_caja;
                         $pedidoModificacion->tallos_x_ramo = $detalle->tallos_x_ramo;
                         $pedidoModificacion->longitud_ramo = $detalle->longitud_ramo;
+                        $pedidoModificacion->peso_ramo = $detalle->peso_ramo;
                         $pedidoModificacion->id_empaque_p = $detalle->id_empaque;
                         $pedidoModificacion->id_empaque_c = $caja->id_empaque;
                         $pedidoModificacion->save();
