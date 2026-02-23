@@ -15,9 +15,6 @@
                 <td>
                     <table style="width:100%;font-family: arial, sans-serif;border-collapse: collapse;">
                         <tr>
-                            <td style="font-size: 20px;font-weight:bold">AGROFARMING</td>
-                        </tr>
-                        <tr>
                             <td style="font-size: 20px;font-weight:bold">{{ $empresa->nombre }}</td>
                         </tr>
                         <tr>
