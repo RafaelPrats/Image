@@ -196,7 +196,7 @@
         </td>
     </tr>
 </table>
-<table style="width:100%;font-family:arial, sans-serif;" cellpadding="0" cellspacing="0">
+<table style="width:100%;font-family:arial, sans-serif;">
     <thead style="border-bottom: 1px solid;border-top: 1px solid">
         <tr>
             <th style="font-size: 14px;vertical-align: middle;border: 1px solid" colspan="2">
