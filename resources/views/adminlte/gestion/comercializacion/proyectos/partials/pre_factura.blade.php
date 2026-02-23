@@ -42,7 +42,7 @@
     </tr>
     <tr>
         <td style="font-size: 13px">
-            <b>R.U.C.</b> {{ $empresa->ruc }} <b><i>CONTRIBUYENTE ESPECIAL RESOL. No 636 DIC. 29/2005</i></b>
+            <b>R.U.C.</b> {{ $empresa->ruc }}
         </td>
     </tr>
     <tr>
@@ -57,8 +57,7 @@
     </tr>
     <tr>
         <td style="font-size: 13px">
-            <b>Plantanción agricola.</b> {{ $empresa->direccion_establecimiento }} <b>FAX:</b>
-            {{ $empresa->fax }}
+            <b>Plantanción agricola.</b> {{ $empresa->direccion_establecimiento }}
         </td>
     </tr>
 </table>
@@ -82,11 +81,7 @@
                     <td style="font-size:12px">Quito - {{ getPais($empresa->codigo_pais)->nombre }}</td>
                 </tr>
                 <tr>
-                    <td style="font-size:12px">PHONE: {{ $empresa->telefono }} - FAX:
-                        {{ $empresa->fax }}</td>
-                </tr>
-                <tr>
-                    <td style="font-size:12px">CONTACT: VENTAS NINTANGA</td>
+                    <td style="font-size:12px">PHONE: {{ $empresa->telefono }}</td>
                 </tr>
             </table>
         </td>
@@ -219,12 +214,6 @@
             <th style="font-size: 14px;vertical-align: middle;border: 1px solid">
                 DESCRIPTION
             </th>
-            <th style="font-size: 14px;vertical-align: middle;border: 1px solid">
-                SPI
-            </th>
-            <th style="font-size: 14px;vertical-align: middle;border: 1px solid">
-                USHTS
-            </th>
             @if (count($getDatosExportacion))
                 @foreach ($getDatosExportacion as $de)
                     @if ($de->nombre != 'PO')
@@ -298,12 +287,6 @@
                     <td style="font-size:11px;vertical-align:middle;border:1px solid;padding-left: 5px">
                         {{ $variedad->planta->nombre . '  ' . $variedad->nombre }}
                     </td>
-                    <td style="font-size:11px;vertical-align:middle;border:1px solid;padding-left: 5px">
-                        A
-                    </td>
-                    <td style="font-size:11px;vertical-align:middle;border:1px solid;padding-left: 5px">
-                        0603199090
-                    </td>
                     @if (count($getDatosExportacion))
                         @foreach ($getDatosExportacion as $de)
                             @if ($de->nombre != 'PO')
@@ -366,7 +349,7 @@
         </tr>
         <tr>
             <td colspan="5" style="text-align: center;border: 0px">
-                MARIA BELEN VARGAS CARVAJAL
+                <br>
                 <b>ASSISTANT FOREING TRADE</b>
             </td>
         </tr>
