@@ -196,7 +196,7 @@
         </td>
     </tr>
 </table>
-<table style="width:100%;font-family:arial, sans-serif;">
+<table style="width:100%;font-family:arial, sans-serif;" cellpadding="0" cellspacing="0">
     <thead style="border-bottom: 1px solid;border-top: 1px solid">
         <tr>
             <th style="font-size: 14px;vertical-align: middle;border: 1px solid" colspan="2">
@@ -325,27 +325,27 @@
             <td style="text-align: center;border: 0px">{{ $total_piezas }}</td>
             <td style="text-align: center;border: 0px">{{ $total_ramos }}</td>
             <td style="text-align: center;border: 0px">{{ $total_tallos }}</td>
-            <td colspan="10" style="font-size: 15px;border: 0px"><b>TERMS OF PAYMENT: FCA, AS PER AGREEMENT.</b></td>
+            <td colspan="8" style="font-size: 15px;border: 0px"><b>TERMS OF PAYMENT: FCA, AS PER AGREEMENT.</b></td>
             <td></td>
         </tr>
         <tr>
-            <td style="text-align: right;border: 0px" colspan="11">
+            <td style="text-align: right;border: 0px" colspan="9">
                 <b>TOTAL VALUE FCA US $:{{ $pedido->getMonto() }}</b>
             </td>
             <td></td>
         </tr>
         <tr>
-            <td style="text-align: left;border: 0px" colspan="5"></td>
+            <td style="text-align: left;border: 0px" colspan="3"></td>
             <td style="text-align: right;border: 0px" colspan="5">
                 <b>TOTAL FULL BOXES: {{ $full_equivalente_real }}</b>
             </td>
             <td></td>
         </tr>
         <tr>
-            <td colspan="10" style="color:white;border: 0px">.</td>
+            <td colspan="8" style="color:white;border: 0px">.</td>
         </tr>
         <tr>
-            <td colspan="10" style="color:white;border: 0px">.</td>
+            <td colspan="8" style="color:white;border: 0px">.</td>
         </tr>
         <tr>
             <td colspan="5" style="text-align: center;border: 0px">
@@ -354,13 +354,13 @@
             </td>
         </tr>
         <tr>
-            <td colspan="10" style="color:white;border: 0px">.</td>
+            <td colspan="8" style="color:white;border: 0px">.</td>
         </tr>
         <tr>
-            <td colspan="10" style="color:white;border: 0px">.</td>
+            <td colspan="8" style="color:white;border: 0px">.</td>
         </tr>
         <tr>
-            <td colspan="4" style="border: 0px"></td>
+            <td colspan="2" style="border: 0px"></td>
             <td colspan="5" style="text-align: center;border: 0px">
                 FLOWERS & FOLIAGE ON THIS INVOICE
                 WERE WHOLLY GROWM IN ECUADOR
