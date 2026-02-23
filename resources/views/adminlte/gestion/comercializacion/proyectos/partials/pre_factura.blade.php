@@ -335,7 +335,7 @@
             <td></td>
         </tr>
         <tr>
-            <td style="text-align: left;border: 0px" colspan="5"><b>REMINDER: STOCK MAUVE IS 60cm</b></td>
+            <td style="text-align: left;border: 0px" colspan="5"></td>
             <td style="text-align: right;border: 0px" colspan="5">
                 <b>TOTAL FULL BOXES: {{ $full_equivalente_real }}</b>
             </td>
