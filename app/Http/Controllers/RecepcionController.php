@@ -13,6 +13,7 @@ use yura\Modelos\Planta;
 use yura\Modelos\ProyLongitudes;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use yura\Modelos\InventarioRecepcion;
 use yura\Modelos\SobranteRecepcion;
 
 class RecepcionController extends Controller
@@ -29,7 +30,7 @@ class RecepcionController extends Controller
         ]);
     }
 
-    public function buscar_listado_recepcion(Request $request)
+    public function listar_reporte(Request $request)
     {
         $listado = DesgloseRecepcion::join('recepcion as r', 'r.id_recepcion', '=', 'desglose_recepcion.id_recepcion');
         if ($request->planta != '')
@@ -51,22 +52,11 @@ class RecepcionController extends Controller
 
     public function add_recepcion(Request $request)
     {
-        $query_plantas = Planta::where('estado', 1)
+        $variedades = Variedad::where('estado', 1)
             ->orderBy('orden')
             ->get();
-        $plantas = [];
-        foreach ($query_plantas as $p) {
-            $longitudes = DB::table('proy_longitudes')
-                ->where('id_planta', $p->id_planta)
-                ->orderBy('orden')
-                ->get();
-            $plantas[] = [
-                'planta' => $p,
-                'longitudes' => $longitudes,
-            ];
-        }
-        return view('adminlte.gestion.postcocecha.recepciones.forms.add_recepcion', [
-            'plantas' => $plantas,
+        return view('adminlte.gestion.postcocecha.recepciones.forms.add_desglose', [
+            'variedades' => $variedades,
             'fecha' => $request->fecha,
         ]);
     }
@@ -96,44 +86,12 @@ class RecepcionController extends Controller
     {
         DB::beginTransaction();
         try {
-            $cosecha = Cosecha::where('fecha_ingreso', $request->fecha)
-                ->get()
-                ->first();
-            if ($cosecha == '') {
-                $cosecha = new Cosecha();
-                $cosecha->fecha_ingreso = $request->fecha;
-                $cosecha->personal = 1;
-                $cosecha->hora_inicio = '08:00';
-                $cosecha->fecha_registro = date('Y-m-d H:i:s');
-                $cosecha->save();
-                $cosecha = Cosecha::All()->last();
-                bitacora('cosecha', $cosecha->id_cosecha, 'I', 'STORE_RECEPCION');
+            foreach (json_decode($request->data) as $d) {
+                $model = new InventarioRecepcion();
+                dd($d);
+                bitacora('inventario_recepcion', $model->id_inventario_recepcion, 'I', 'INGRESO RECEPCION');
             }
-            $recepcion = new Recepcion();
-            $recepcion->id_semana = getSemanaByDate($request->fecha)->id_semana;
-            $recepcion->id_cosecha = $cosecha->id_cosecha;
-            $recepcion->fecha_ingreso = $request->fecha;
-            $recepcion->fecha_registro = date('Y-m-d H:i:s');
-            $recepcion->save();
-            $recepcion = Recepcion::All()->last();
-            bitacora('recepcion', $recepcion->id_recepcion, 'I', 'STORE_RECEPCION');
-            foreach ($request->data as $d) {
-                $desglose = new DesgloseRecepcion();
-                $desglose->id_variedad = $d['variedad'];
-                $desglose->longitud_ramo = $d['longitud'];
-                $desglose->id_modulo = -1;
-                $desglose->tallos_x_malla = $d['tallos_x_malla'];
-                $desglose->cantidad_mallas = $d['mallas'];
-                $desglose->id_recepcion = $recepcion->id_recepcion;
-                $desglose->fecha_registro = date('Y-m-d H:i:s');
-                $desglose->save();
-                $desglose = DesgloseRecepcion::All()->last();
-                bitacora('desglose_recepcion', $desglose->id_desglose_recepcion, 'I', 'STORE_RECEPCION: var:' . $desglose->id_variedad . '; cm: ' . $desglose->longitud_ramo . '; mallas: ' . $desglose->cantidad_mallas . '; tallos_x_malla: ' . $desglose->tallos_x_malla);
 
-                /* ======= ACTUALIZAR LA TABLA COSECHA_DIARIA ========== */
-                /*jobActualizarCosecha::dispatch($d['variedad'], substr($recepcion->fecha_ingreso, 0, 10), $finca)
-                ->onQueue('proy_cosecha');*/
-            }
             DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();

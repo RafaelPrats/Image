@@ -1,5 +1,5 @@
 <script>
-    buscar_listado_recepcion();
+    listar_reporte();
 
     function add_recepcion() {
         datos = {
@@ -23,13 +23,13 @@
         })
     }
 
-    function buscar_listado_recepcion() {
+    function listar_reporte() {
         datos = {
             fecha: $('#filtro_fecha').val(),
             planta: $('#filtro_planta').val(),
             longitud: $('#filtro_longitud').val(),
         }
-        get_jquery('{{ url('recepcion/buscar_listado_recepcion') }}', datos, function(retorno) {
+        get_jquery('{{ url('recepcion/listar_reporte') }}', datos, function(retorno) {
             $('#div_listado_recepciones').html(retorno);
             estructura_tabla('table_listado_recepcion');
             $('#table_listado_recepcion_filter label input').addClass('input-yura_default')

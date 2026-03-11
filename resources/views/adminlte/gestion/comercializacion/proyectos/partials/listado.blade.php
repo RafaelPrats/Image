@@ -218,7 +218,8 @@
                         <th class="text-center" style="border-color: #9d9d9d">
                             {{ $detalle->nombre_planta }} -
                             <br>
-                            {{ $detalle->nombre_variedad }} {{ $detalle->longitud_ramo }}cm {{ $detalle->peso_ramo }}gr
+                            {{ $detalle->nombre_variedad }} {{ $detalle->longitud_ramo }}cm
+                            {{ $detalle->peso_ramo }}gr
                         </th>
                         @if ($pos_d == 0)
                             <th class="text-center" style="border-color: #9d9d9d; font-size: 0.9em;"
@@ -365,6 +366,9 @@
                                 <th class="text-center th_yura_green padding_lateral_5">
                                     MONTO
                                 </th>
+                                <th class="text-center th_yura_green padding_lateral_5">
+                                    PxT
+                                </th>
                             </tr>
                             @php
                                 $total_tallos = 0;
@@ -383,7 +387,8 @@
                                         {{ $item['nombre_planta'] }}
                                     </th>
                                     <th style="border-color: #9d9d9d;">
-                                        {{ $item['nombre_variedad'] }} {{ $item['longitud'] }}cm {{ $item['peso'] }}gr
+                                        {{ $item['nombre_variedad'] }} {{ $item['longitud'] }}cm
+                                        {{ $item['peso'] }}gr
                                     </th>
                                     <th class="text-center" style="border-color: #9d9d9d">
                                         {{ $item['tallos'] }}
@@ -393,6 +398,9 @@
                                     </th>
                                     <th class="text-center" style="border-color: #9d9d9d">
                                         ${{ round($item['venta'], 2) }}
+                                    </th>
+                                    <th class="text-center" style="border-color: #9d9d9d">
+                                        ${{ round($item['venta'] / $item['tallos'], 2) }}
                                     </th>
                                 </tr>
                             @endforeach
@@ -408,6 +416,9 @@
                                 </th>
                                 <th class="text-center th_yura_green padding_lateral_5">
                                     ${{ round($total_monto, 2) }}
+                                </th>
+                                <th class="text-center th_yura_green padding_lateral_5">
+                                    ${{ round($total_monto / $total_tallos, 2) }}
                                 </th>
                             </tr>
                         </tbody>

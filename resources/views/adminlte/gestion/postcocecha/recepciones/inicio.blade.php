@@ -76,14 +76,14 @@
                             <button type="button" class="btn btn-yura_dark" onclick="add_recepcion()">
                                 <i class="fa fa-fw fa-plus"></i>
                             </button>
-                            <button type="button" class="btn btn-yura_default" onclick="ver_sobrantes()"
+                            {{-- <button type="button" class="btn btn-yura_default" onclick="ver_sobrantes()"
                                 title="Ver Sobrantes">
                                 <i class="fa fa-fw fa-gift"></i>
-                            </button>
-                            <button type="button" class="btn btn-yura_default" title="Exportar"
+                            </button> --}}
+                            {{-- <button type="button" class="btn btn-yura_default" title="Exportar"
                                 onclick="exportar_recepcion()">
                                 <i class="fa fa-fw fa-file-excel-o"></i>
-                            </button>
+                            </button> --}}
                         </div>
                     </div>
                 </td>
