@@ -74,6 +74,7 @@ class jobGrabarOrdenFija implements ShouldQueue
                     $detalle->ramos_x_caja = $det_original->ramos_x_caja;
                     $detalle->tallos_x_ramo = $det_original->tallos_x_ramo;
                     $detalle->precio = $det_original->precio;
+                    $detalle->peso_ramo = $det_original->peso_ramo;
                     $detalle->longitud_ramo = $det_original->longitud_ramo;
                     $detalle->save();
                 }

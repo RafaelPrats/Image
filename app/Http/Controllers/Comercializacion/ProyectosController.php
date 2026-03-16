@@ -388,11 +388,6 @@ class ProyectosController extends Controller
             'success' => $success,
             'mensaje' => $msg,
         ];
-
-        return [
-            'success' => $success,
-            'mensaje' => $msg,
-        ];
     }
 
     public function editar_proyecto(Request $request)
@@ -881,13 +876,13 @@ class ProyectosController extends Controller
             }
 
             // ACTUALIZAR COSECHA ESTIMADA
-            jobCosechaEstimada::dispatch(0, 0, $fecha_anterior)
+            /*jobCosechaEstimada::dispatch(0, 0, $fecha_anterior)
                 ->onQueue('cosecha_estimada')
                 ->onConnection('database');
             if ($fecha_anterior != $fecha_actual)
                 jobCosechaEstimada::dispatch(0, 0, $fecha_actual)
                     ->onQueue('cosecha_estimada')
-                    ->onConnection('database');
+                    ->onConnection('database');*/
 
             DB::select('delete from caja_proyecto where id_proyecto = ' . $request->id_proyecto . ' and id_caja_proyecto not in (' . $cajas_actuales . ')');
 
